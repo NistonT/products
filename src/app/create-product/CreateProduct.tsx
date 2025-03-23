@@ -1,4 +1,5 @@
 "use client";
+import { DASHBOARD_PAGES } from "@/config/pages-url.config";
 import { IProduct, useProductStore } from "@/store/store";
 import {
 	AlignLeft,
@@ -8,6 +9,7 @@ import {
 	PlusCircle,
 	Star,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export const CreateProduct = () => {
@@ -20,6 +22,8 @@ export const CreateProduct = () => {
 		rating: { rate: 0, count: 0 },
 		title: "",
 	});
+
+	const { push } = useRouter();
 
 	const [errors, setErrors] = useState<Partial<IProduct>>({});
 
@@ -61,8 +65,7 @@ export const CreateProduct = () => {
 			rating: { rate: 0, count: 0 },
 			title: "",
 		});
-
-		console.log("Товар добавлен:", product);
+		push(DASHBOARD_PAGES.PRODUCTS);
 	};
 
 	const isValidUrl = (urlString: string): boolean => {
