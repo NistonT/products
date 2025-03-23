@@ -16,6 +16,7 @@ export async function generateStaticParams() {
 	}));
 }
 
-export default function ProductPage({ params: { id } }: Props) {
+export default function ProductPage({ params }: Props) {
+	const { id } = params;
 	return <IdProduct id={id} />;
 }
