@@ -4,7 +4,7 @@ import { IdProduct } from "./IdProduct";
 
 interface Props {
 	params: {
-		id: number;
+		id: string;
 	};
 }
 
@@ -17,5 +17,5 @@ export async function generateStaticParams() {
 }
 
 export default function ProductPage({ params: { id } }: Props) {
-	return <IdProduct id={id} />;
+	return <IdProduct id={parseInt(id)} />;
 }
