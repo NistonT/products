@@ -72,7 +72,7 @@ export const CreateProduct = () => {
 		try {
 			new URL(urlString);
 			return true;
-		} catch (e) {
+		} catch {
 			return false;
 		}
 	};

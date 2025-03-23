@@ -6,7 +6,6 @@ import { StarsProductId } from "@/components/IdProduct/StarsProductId";
 import { Modal } from "@/components/Modal/Modal";
 import { useIsModal } from "@/store/isModal.store";
 import { IProduct, useProductStore } from "@/store/store";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FormChange } from "./FormChange";
 
@@ -15,15 +14,9 @@ type Props = {
 };
 
 export const IdProduct = ({ id }: Props) => {
-	const { products, like_products, toggleLikeProduct, removeProduct } =
-		useProductStore();
+	const { products, like_products } = useProductStore();
 	const [product, setProduct] = useState<IProduct | null>(null);
 	const { isModal, setIsModal } = useIsModal();
-	const { push } = useRouter();
-
-	const handlerIsModal = () => {
-		setIsModal();
-	};
 
 	useEffect(() => {
 		setProduct(null);
