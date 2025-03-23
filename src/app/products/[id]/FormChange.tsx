@@ -20,20 +20,35 @@ export const FormChange = ({ product }: Props) => {
 		setFormData(prev => ({ ...prev, [name]: value }));
 	};
 
-	const handleRatingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleNumberChange = (
+		e: React.ChangeEvent<HTMLInputElement>,
+		field: keyof IProduct | keyof IProduct["rating"]
+	) => {
 		const { value } = e.target;
-		setFormData(prev => ({
-			...prev,
-			rating: {
-				...prev.rating,
-				rate: parseFloat(value),
-			},
-		}));
+
+		const numericValue = parseFloat(value);
+		if (!isNaN(numericValue)) {
+			if (field === "rate") {
+				setFormData(prev => ({
+					...prev,
+					rating: { ...prev.rating, rate: numericValue },
+				}));
+			} else {
+				setFormData(prev => ({ ...prev, [field]: numericValue }));
+			}
+		}
 	};
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
+
+		if (!formData.title || !formData.category || !formData.price) {
+			alert("Пожалуйста, заполните все обязательные поля.");
+			return;
+		}
+
 		changeProduct(product.id, formData);
+
 		setIsModal();
 	};
 
@@ -48,6 +63,7 @@ export const FormChange = ({ product }: Props) => {
 					onChange={handleChange}
 					placeholder='Название товара'
 					className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+					required
 				/>
 			</div>
 
@@ -60,6 +76,7 @@ export const FormChange = ({ product }: Props) => {
 					onChange={handleChange}
 					placeholder='Категория товара'
 					className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+					required
 				/>
 			</div>
 
@@ -69,9 +86,10 @@ export const FormChange = ({ product }: Props) => {
 					type='number'
 					name='price'
 					value={formData.price}
-					onChange={handleChange}
+					onChange={e => handleNumberChange(e, "price")}
 					placeholder='Цена товара'
 					className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+					required
 				/>
 			</div>
 
@@ -81,7 +99,7 @@ export const FormChange = ({ product }: Props) => {
 					type='number'
 					name='rating.rate'
 					value={formData.rating.rate}
-					onChange={handleRatingChange}
+					onChange={e => handleNumberChange(e, "rate")}
 					placeholder='Рейтинг товара'
 					step='0.1'
 					className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
@@ -117,7 +135,7 @@ export const FormChange = ({ product }: Props) => {
 
 			<div className='flex justify-end space-x-4'>
 				<button
-					onClick={setIsModal}
+					onClick={() => setIsModal()}
 					type='button'
 					className='px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300'
 				>

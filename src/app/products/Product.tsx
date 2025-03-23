@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const Product = ({ product }: Props) => {
-	const { like_products, toggleLikeProduct, removeProduct } = useProductStore();
+	const { like_products } = useProductStore();
 
 	const isLiked = like_products.some(p => p.id === product.id);
 
