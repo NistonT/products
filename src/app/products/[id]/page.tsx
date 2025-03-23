@@ -13,6 +13,7 @@ export async function generateStaticParams() {
   }));
 }
 
+// @ts-ignore
 export default function ProductPage({ params }: { params: Params }) {
   return <IdProduct id={Number(params.id)} />;
 }
