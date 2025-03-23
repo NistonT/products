@@ -1,6 +1,7 @@
 import { productsService } from "@/services/products.service";
 import { IProduct } from "@/store/store";
 import { IdProduct } from "./IdProduct";
+import type { PageProps } from "next";
 
 interface Params {
   id: string;
