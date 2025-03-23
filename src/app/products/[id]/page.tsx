@@ -10,6 +10,7 @@ interface Props {
 
 export async function generateStaticParams() {
 	const products = await productsService.getProducts();
+
 	return products.data.map((product: IProduct) => ({
 		id: product.id.toString(),
 	}));
