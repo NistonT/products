@@ -11,7 +11,7 @@ type Props = {
 export const FormChange = ({ product }: Props) => {
 	const [formData, setFormData] = useState<IProduct>(product);
 	const changeProduct = useProductStore(state => state.changeProduct);
-	const { isModal, setIsModal } = useIsModal();
+	const { setIsModal } = useIsModal();
 
 	const handleChange = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

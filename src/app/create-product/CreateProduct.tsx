@@ -33,6 +33,7 @@ export const CreateProduct = () => {
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 	) => {
 		const { name, value } = e.target;
+
 		setProduct(prev => ({ ...prev, [name]: value }));
 		setErrors(prev => ({ ...prev, [name]: "" }));
 	};
@@ -72,7 +73,7 @@ export const CreateProduct = () => {
 		try {
 			new URL(urlString);
 			return true;
-		} catch (e) {
+		} catch {
 			return false;
 		}
 	};

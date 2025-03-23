@@ -1,4 +1,5 @@
 import { IProduct } from "@/store/store";
+import Image from "next/image";
 
 type Props = {
 	product: IProduct | null;
@@ -7,7 +8,7 @@ type Props = {
 export const ImageProductId = ({ product }: Props) => {
 	return (
 		<div className='lg:w-1/2 w-full lg:h-auto h-64 overflow-hidden rounded-lg shadow-lg'>
-			<img
+			<Image
 				alt={product?.title || "Product image"}
 				src={
 					product?.image ||
