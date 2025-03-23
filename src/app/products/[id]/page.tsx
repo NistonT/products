@@ -1,7 +1,6 @@
 import { productsService } from "@/services/products.service";
 import { IProduct } from "@/store/store";
 import { IdProduct } from "./IdProduct";
-import type { PageProps } from "next";
 
 interface Params {
   id: string;
@@ -14,6 +13,6 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ProductPage({ params }: PageProps<Params>) {
+export default function ProductPage({ params }: { params: Params }) {
   return <IdProduct id={Number(params.id)} />;
 }
