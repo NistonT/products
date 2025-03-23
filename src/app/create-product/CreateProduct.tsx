@@ -33,6 +33,7 @@ export const CreateProduct = () => {
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 	) => {
 		const { name, value } = e.target;
+
 		setProduct(prev => ({ ...prev, [name]: value }));
 		setErrors(prev => ({ ...prev, [name]: "" }));
 	};
