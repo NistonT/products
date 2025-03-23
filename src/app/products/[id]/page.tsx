@@ -16,6 +16,6 @@ export async function generateStaticParams() {
 	}));
 }
 
-export default function ProductPage({ params: { id } }: Props) {
-	return <IdProduct id={parseInt(id)} />;
+export default function ProductPage({ params }: PageProps<Params>) {
+  return <IdProduct id={params.id} />;
 }
