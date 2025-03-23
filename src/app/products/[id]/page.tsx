@@ -4,7 +4,7 @@ import { IdProduct } from "./IdProduct";
 
 interface Props {
 	params: {
-		id: number;
+		id: string;
 	};
 }
 
