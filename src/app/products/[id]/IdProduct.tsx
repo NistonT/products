@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { FormChange } from "./FormChange";
 
 type Props = {
-	id: string;
+	id: number;
 };
 
 export const IdProduct = ({ id }: Props) => {
