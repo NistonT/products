@@ -16,7 +16,7 @@ type Props = {
 export const IdProduct = ({ id }: Props) => {
 	const { products, like_products } = useProductStore();
 	const [product, setProduct] = useState<IProduct | null>(null);
-	const { isModal, setIsModal } = useIsModal();
+	const { isModal } = useIsModal();
 
 	useEffect(() => {
 		setProduct(null);
