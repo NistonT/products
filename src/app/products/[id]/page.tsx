@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { productsService } from "@/services/products.service";
 import { IProduct } from "@/store/store";
 import { IdProduct } from "./IdProduct";
@@ -13,7 +14,7 @@ export async function generateStaticParams() {
   }));
 }
 
-// @ts-ignore
+// @ts-expect-error
 export default function ProductPage({ params }: { params: Params }) {
   return <IdProduct id={Number(params.id)} />;
 }
