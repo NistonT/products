@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+	output: "export",
+	basePath: "/products",
 	images: {
 		remotePatterns: [
 			{
@@ -8,6 +10,7 @@ const nextConfig: NextConfig = {
 				hostname: "**",
 			},
 		],
+		unoptimized: true,
 	},
 };
 
